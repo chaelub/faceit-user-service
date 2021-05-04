@@ -1,0 +1,245 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "FACEIT User service API",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "version": "0.1"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "paths": {
+        "/user": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Register new user",
+                "parameters": [
+                    {
+                        "description": "New user's data",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.UserRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.publicUser"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/types.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/types.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/types.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/find": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Returns a list of User models founded by given criteria",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Email regexp template",
+                        "name": "email",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Country regexp template",
+                        "name": "country",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.publicUser"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Returns User model by given ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.publicUser"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Updates User model",
+                "parameters": [
+                    {
+                        "description": "New user's data",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.UserRequest"
+                        }
+                    },
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.publicUser"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Deletes whole user data",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.publicUser"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.publicUser": {
+            "type": "object",
+            "properties": {
+                "country": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "nickname": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.Response": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "payload": {
+                    "type": "object"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "types.UserRequest": {
+            "type": "object",
+            "properties": {
+                "country": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "nickname": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
