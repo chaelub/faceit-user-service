@@ -60,10 +60,6 @@ func (a *API) Failure(w http.ResponseWriter, status int, err error) error {
 // @title FACEIT User service API
 // @version 0.1
 
-// @contact.name API Support
-// @contact.url http://www.swagger.io/support
-// @contact.email support@swagger.io
-
 // @host localhost:3000
 // @BasePath /
 func NewApiRouter(userProvider userProviderI, events eventServiceI) *API {
