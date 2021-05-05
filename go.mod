@@ -8,6 +8,7 @@ require (
 	github.com/go-openapi/swag v0.19.15 // indirect
 	github.com/gorilla/mux v1.8.0
 	github.com/mailru/easyjson v0.7.7 // indirect
+	github.com/stretchr/testify v1.6.1
 	github.com/swaggo/http-swagger v1.0.0
 	github.com/swaggo/swag v1.7.0
 	golang.org/x/net v0.0.0-20210503060351-7fd8e65b6420 // indirect
