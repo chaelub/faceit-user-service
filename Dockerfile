@@ -1,8 +1,8 @@
 FROM golang:latest
 
-WORKDIR /app
+WORKDIR /faceit-user-service
 
-COPY ./ /app
+COPY ./ /faceit-user-service
 
 RUN go mod tidy
 RUN go get -u github.com/swaggo/swag/cmd/swag
